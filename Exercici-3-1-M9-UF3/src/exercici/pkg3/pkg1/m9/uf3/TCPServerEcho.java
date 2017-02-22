@@ -14,15 +14,30 @@ public class TCPServerEcho {
     ServerSocket ssocket;
 
     public TCPServerEcho(int port) throws IOException {
+        //Es crea el socket.
         this.ssocket = new ServerSocket(port);
 
         while (true) {
+            
+            //Es crea el socket.
             Socket accept = ssocket.accept();
+            
+            
             DataOutputStream outToClient = new DataOutputStream(accept.getOutputStream());
+            
+            
             BufferedReader buffer = new BufferedReader(new InputStreamReader(accept.getInputStream()));
+            
+            
             String cadena = buffer.readLine();
+            
+            
             outToClient.writeBytes(cadena + "\n");
+            
+            
             JOptionPane.showMessageDialog(null, cadena);
+            
+            
 
             outToClient.close();
             buffer.close();
